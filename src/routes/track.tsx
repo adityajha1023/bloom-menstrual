@@ -2,25 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CalendarIcon, Plus, X, Sparkles } from "lucide-react";
 import { format } from "date-fns";
-import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+import { Calendar } from "../components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
+import { cn } from "../lib/utils";
 
-export const Route = createFileRoute("/track")({
-  head: () => ({
-    meta: [
-      { title: "Track — Bloom" },
-      {
-        name: "description",
-        content:
-          "Log your last period and cycle length to get personalized AI predictions.",
-      },
-    ],
-  }),
-  component: TrackPage,
-});
-
-function TrackPage() {
+export default function TrackPage() {
   const [date, setDate] = useState<Date | undefined>();
   const [cycleLength, setCycleLength] = useState<number>(28);
   const [past, setPast] = useState<number[]>([]);
@@ -46,6 +32,8 @@ function TrackPage() {
     window.location.href = "/";
   };
 
+  
+
   return (
     <main className="space-y-4 max-w-xl">
 
@@ -55,11 +43,11 @@ function TrackPage() {
           <Sparkles className="h-3 w-3" /> Track
         </span>
 
-        <h1 className="mt-3 text-3xl tracking-tight font-medium text-[#2E2E2E]">
+        <h1 className="mt-3 text-h3 font-medium text-[#2E2E2E]">
           Tell us about your cycle
         </h1>
 
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-2 text-p text-gray-500">
           A few gentle details help us predict your next period and ovulation.
         </p>
       </div>
@@ -72,7 +60,7 @@ function TrackPage() {
 
         {/* Date */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-[#2E2E2E]">
+          <label className="text-p font-medium text-[#2E2E2E]">
             Last period date
           </label>
 
@@ -81,7 +69,7 @@ function TrackPage() {
               <button
                 type="button"
                 className={cn(
-                  "flex w-full items-center justify-between rounded-xl border border-[#EFEFEF] bg-white px-4 py-3 text-left text-sm hover:border-[#F6C1CC]",
+                  "flex w-full items-center justify-between rounded-xl border border-[#EFEFEF] bg-white px-4 py-3 text-left text-p hover:border-[#F6C1CC]",
                   !date && "text-gray-400"
                 )}
               >
@@ -104,7 +92,7 @@ function TrackPage() {
 
         {/* Cycle Length */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-[#2E2E2E]">
+          <label className="text-p font-medium text-[#2E2E2E]">
             Cycle length
           </label>
 
@@ -115,16 +103,16 @@ function TrackPage() {
               max={45}
               value={cycleLength}
               onChange={(e) => setCycleLength(Number(e.target.value))}
-              className="w-28 rounded-xl border border-[#EFEFEF] px-4 py-3 text-sm focus:outline-none focus:border-[#F6C1CC]"
+              className="w-28 rounded-xl border border-[#EFEFEF] px-4 py-3 text-p focus:outline-none focus:border-[#F6C1CC]"
             />
-            <span className="text-sm text-gray-500">days</span>
+            <span className="text-p text-gray-500">days</span>
           </div>
         </div>
 
         {/* Past cycles */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-[#2E2E2E]">
+            <label className="text-p font-medium text-[#2E2E2E]">
               Past cycle lengths{" "}
               <span className="text-xs text-gray-500">— optional</span>
             </label>
@@ -157,7 +145,7 @@ function TrackPage() {
                         p.map((x, idx) => (idx === i ? v : x))
                       );
                     }}
-                    className="w-24 rounded-xl border border-[#EFEFEF] px-3 py-2 text-sm focus:outline-none focus:border-[#F6C1CC]"
+                    className="w-24 rounded-xl border border-[#EFEFEF] px-3 py-2 text-p focus:outline-none focus:border-[#F6C1CC]"
                   />
 
                   <span className="text-xs text-gray-500">days</span>
@@ -179,11 +167,11 @@ function TrackPage() {
         <button
           type="button"
           onClick={handleSubmit}
-          className="w-full rounded-full bg-[#de5590] px-6 py-3.5 text-sm font-medium text-white hover:opacity-90"
+          className="w-full rounded-full bg-[#de5590] px-6 py-3.5 text-p font-medium text-white hover:opacity-90"
         >
           Save & predict
         </button>
       </form>
     </main>
   );
-}
+};

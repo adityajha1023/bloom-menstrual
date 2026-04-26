@@ -15,8 +15,8 @@ export const Route = createFileRoute("/")({
   component: Dashboard,
 });
 
-function Dashboard() {
-  const [nextPeriod, setNextPeriod] = useState<string>("--");
+export default function Dashboard() {
+const [nextPeriod, setNextPeriod] = useState<string>("--");
   const [ovulation, setOvulation] = useState<string>("--");
   const [cycleLength, setCycleLength] = useState<number>(28);
   const [regularity, setRegularity] = useState<string>("--");
@@ -49,7 +49,7 @@ function Dashboard() {
               pastCycles.length
             : length;
 
-        const res = await fetch("https://https://bloom-menstrual.onrender.com/predict", {
+        const res = await fetch("https://bloom-menstrual.onrender.com/predict", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -117,18 +117,18 @@ function Dashboard() {
   // 🚨 EMPTY STATE UI
   if (!hasData) {
     return (
-      <main className="flex min-h-[70vh] flex-col items-center justify-center gap-4 text-center space-y-12">
-        <h1 className="text-2xl font-medium text-[#2E2E2E]">
+      <main className="flex min-h-[70vh] flex-col items-center justify-center gap-0 text-center space-y-4">
+        <h1 className="text-h2 font-medium text-[#2E2E2E]">
           Let’s get started
         </h1>
 
-        <p className="text-sm text-gray-500 max-w-sm">
+        <p className="text-p tracking-tight text-gray-500 max-w-sm">
           Set your last period date and cycle length to unlock personalized predictions.
         </p>
 
         <Link
           to="/track"
-          className="rounded-full bg-[#de5590] px-6 py-3 text-sm text-white hover:opacity-90"
+          className="rounded-full bg-[#de5590] px-6 py-3 text-p text-white hover:opacity-90"
         >
           Set your cycle
         </Link>
@@ -145,7 +145,7 @@ function Dashboard() {
           <Sparkles className="h-3 w-3" /> Dashboard
         </span>
 
-        <h1 className="text-3xl font-medium tracking-tight text-[#2E2E2E]">
+        <h1 className="text-h2 font-medium tracking-tight text-[#2E2E2E]">
           Your cycle insights
         </h1>
 

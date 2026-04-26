@@ -7,8 +7,8 @@ export const Route = createFileRoute("/calendar")({
   component: CalendarPage,
 });
 
-function CalendarPage() {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+export default function CalendarPage() {
+const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [periodDays, setPeriodDays] = useState<Date[]>([]);
   const [ovulationDay, setOvulationDay] = useState<Date | null>(null);
 
@@ -49,11 +49,11 @@ function CalendarPage() {
           <Sparkles className="h-3 w-3" /> Calendar
         </span>
 
-        <h1 className="mt-3 text-3xl tracking-tight font-medium text-[#2E2E2E]">
+        <h1 className="mt-3 text-h3 font-medium text-[#2E2E2E]">
           Your cycle calendar
         </h1>
 
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-2 text-p text-gray-500">
           View your upcoming period and ovulation days.
         </p>
       </div>
@@ -77,7 +77,7 @@ function CalendarPage() {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center gap-6 text-sm text-gray-600">
+      <div className="flex items-center gap-6 text-p text-gray-600">
 
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-[#E8A0BF]" />
