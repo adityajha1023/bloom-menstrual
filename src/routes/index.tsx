@@ -94,7 +94,7 @@ const [nextPeriod, setNextPeriod] = useState<string>("--");
 
           if (std < 2) setRegularity("Regular");
           else if (std < 5) setRegularity("Moderate");
-          else setRegularity("Irregular");
+          else setRegularity("Irregular (Consult a Doctor)");
         } else {
           setRegularity("Normal");
         }
